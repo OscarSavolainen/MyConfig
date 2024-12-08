@@ -1,0 +1,28 @@
+[font]
+bold.family = "Mononoki Nerd Font"
+bold.style = "Bold"
+
+bold_italic.family = "Mononoki Nerd Font"
+bold_italic.style = "BoldItalic"
+
+italic.family = "Mononoki Nerd Font"
+italic.style = "Italic"
+
+normal.family = "Mononoki Nerd Font"
+normal.style = "Regular"
+
+size = 16.0
+
+[window]
+# decorations = "none"
+opacity = 0.87
+startup_mode = "SimpleFullScreen"
+
+[colors]
+transparent_background_colors = true
+
+
+[[keyboard.bindings]]
+key = "n"
+mods = "Command"
+action = "ToggleFullscreen"
