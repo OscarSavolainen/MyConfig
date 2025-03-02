@@ -35,32 +35,6 @@ local config = function()
 		},
 	})
 
-	-- typescript
-	lspconfig.ts_ls.setup({
-		on_attach = on_attach,
-		capabilities = capabilities,
-		filetypes = {
-			"typescript",
-			"javascript",
-			"typescriptreact",
-			"javascriptreact",
-		},
-		commands = {
-			TypeScriptOrganizeImports = typescript_organise_imports,
-		},
-		settings = {
-			typescript = {
-				indentStyle = "space",
-				indentSize = 2,
-			},
-			javascript = {
-				indentStyle = "space",
-				indentSize = 2,
-			},
-		},
-		root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", ".git"),
-	})
-
 	-- python
 	lspconfig.basedpyright.setup({
 		capabilities = capabilities, -- autocomplete
@@ -131,15 +105,7 @@ local config = function()
 			"sh",
 			"markdown",
 			"docker",
-			"javascript",
-			"javascriptreact",
-			"typescript",
-			"typescriptreact",
-			"svelte",
-			"vue",
-			"html",
 			"json",
-			"jsonc",
 		},
 		init_options = {
 			documentFormatting = true,
@@ -155,17 +121,9 @@ local config = function()
 				lua = { luacheck, stylua },
 				python = { flake8, black },
 				sh = { shellcheck, shfmt },
-				-- markdown = { writegood, prettier_d },
 				markdown = { prettier_d },
 				docker = { hadolint, prettier_d },
-				typescript = { eslint_d, prettier_d },
 				json = { eslint_d, fixjson },
-				jsonc = { eslint_d, fixjson },
-				javascript = { eslint_d, prettier_d },
-				javascriptreact = { eslint_d, prettier_d },
-				typescriptreact = { eslint_d, prettier_d },
-				svelte = { eslint_d, prettier_d },
-				vue = { eslint_d, prettier_d },
 			},
 		},
 	})

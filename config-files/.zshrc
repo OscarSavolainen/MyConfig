@@ -122,6 +122,8 @@ alias vim='nvim'
 ff() {
     find . -maxdepth 1 -name "$1" -print
 }
+alias dsa='docker stop $(docker ps -a -q)'
+alias dra='docker rm $(docker ps -a -q)'
 
 # Personal settings:
 # Keeps less from opening a seperate window
@@ -147,13 +149,6 @@ bindkey '^l' forward-word
 # Not case sensitive autocomplete
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
-# Java settings
-export JAVA_HOME=/opt/homebrew/opt/openjdk@17
-export PATH=$JAVA_HOME/bin:$PATH
-
-# Jave Maven settings
-export PATH=$PATH:/opt/apache-maven/bin
-
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/opt/homebrew/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
@@ -169,11 +164,8 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-source /Users/oscarsavolainen/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# For mac:
+# source /Users/oscarsavolainen/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Created by `pipx` on 2024-06-06 08:50:09
 export PATH="$PATH:/Users/oscarsavolainen/.local/bin"
