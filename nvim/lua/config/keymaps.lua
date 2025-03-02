@@ -77,11 +77,50 @@ local api = vim.api
 -- Comments
 -- api.nvim_set_keymap("n", "<C-_>", "gcc", { noremap = false })
 -- api.nvim_set_keymap("v", "<C-_>", "goc", { noremap = false })
+--
+--
 
 -- Common patterns
 -- Highlight work, paste buffer, and copy again
 api.nvim_set_keymap("n", "Q", "viwpyiw", { noremap = true })
 
+-- Function to resolve git conflicts by always selecting HEAD
+function resolve_conflict_with_head()
+  -- Search for the start of a conflict marker (<<<<<<< HEAD)
+  vim.fn.search("<<<<<<< HEAD", "cW")
+  
+  -- Delete the conflict marker line
+  vim.cmd("normal! dd")
+  
+  -- Find the separator line (=======)
+  local start_line = vim.fn.line(".")
+  vim.fn.search("=======", "W")
+  
+  -- Create a mark at the separator line
+  local separator_line = vim.fn.line(".")
+  
+  -- Find the end of the conflict (>>>>>>> commit message)
+  vim.fn.search(">>>>>>>", "W")
+  local end_line = vim.fn.line(".")
+  
+  -- Delete from separator to end (including both lines)
+  vim.cmd(separator_line .. "," .. end_line .. "delete")
+  
+  -- Return to where we were
+  vim.cmd("normal! `")
+end
+vim.api.nvim_set_keymap(
+  "n",
+  "<leader>gh",
+  "<cmd>lua resolve_conflict_with_head()<CR>",
+  { noremap = true, silent = true, desc = "Resolve git conflict with HEAD" }
+)
+vim.api.nvim_set_keymap(
+  "n",
+  "<leader>gH",
+  [[<cmd>g/<<<<<<< HEAD/norm! ddj:.,/=======\|->\|\(>>>>>>>\)/g/=======\|>>>>>>>/d<CR>]],
+  { noremap = true, silent = true, desc = "Resolve all git conflicts with HEAD in file" }
+)
 
 -- Auto-format
 vim.keymap.set("n", "<leader>o", function()
