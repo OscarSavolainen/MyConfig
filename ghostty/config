@@ -1,9 +1,9 @@
-background-opacity = 0.85
+background-opacity = 0.92
 
-window-height=130
-window-width=300
+# window-height=130
+# window-width=300
 
-font-size = 15
+font-size = 14
 theme = vesper
 shell-integration-features = no-cursor,sudo,no-title
 cursor-style = block
@@ -15,4 +15,7 @@ window-padding-balance = true
 window-save-state = always
 macos-titlebar-style = transparent
 window-colorspace = "display-p3"
-
+# scroll back limit in bytes
+scrollback-limit = 100000
+maximize = true
+fullscreen = true
