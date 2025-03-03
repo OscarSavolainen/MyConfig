@@ -18,4 +18,4 @@ window-colorspace = "display-p3"
 # scroll back limit in bytes
 scrollback-limit = 100000
 maximize = true
-fullscreen = true
+fullscreen = false
