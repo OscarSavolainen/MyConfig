@@ -124,6 +124,8 @@ ff() {
 }
 alias dsa='docker stop $(docker ps -a -q)'
 alias dra='docker rm $(docker ps -a -q)'
+alias version='lsb_release -a'
+alias vim.='vim .'
 
 # Personal settings:
 # Keeps less from opening a seperate window
@@ -149,20 +151,39 @@ bindkey '^l' forward-word
 # Not case sensitive autocomplete
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
+# LINUX
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/opt/homebrew/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/home/oscar/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
-        . "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh"
+    if [ -f "/home/oscar/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/oscar/miniconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/opt/homebrew/Caskroom/miniconda/base/bin:$PATH"
+        export PATH="/home/oscar/miniconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
+eval "conda activate $DEFAULT_CONDA_ENV"
 # <<< conda initialize <<<
+
+# MACOS
+# >>> conda initialize >>>
+# # !! Contents within this block are managed by 'conda init' !!
+# __conda_setup="$('/opt/homebrew/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+# if [ $? -eq 0 ]; then
+#     eval "$__conda_setup"
+# else
+#     if [ -f "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
+#         . "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh"
+#     else
+#         export PATH="/opt/homebrew/Caskroom/miniconda/base/bin:$PATH"
+#     fi
+# fi
+# unset __conda_setup
+# <<< conda initialize <<<
+#
 
 # For mac:
 # source /Users/oscarsavolainen/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -170,3 +191,5 @@ unset __conda_setup
 # Created by `pipx` on 2024-06-06 08:50:09
 export PATH="$PATH:/Users/oscarsavolainen/.local/bin"
 
+# Keymappings
+xmodmap ~/.Xmodmap
