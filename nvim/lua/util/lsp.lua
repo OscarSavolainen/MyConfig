@@ -33,7 +33,6 @@ M.typescript_organise_imports = {
 		vim.lsp.buf.execute_command(params)
 	end,
 }
-
-M.diagnostic_signs = { Error = " ", Warn = " ", Hint = "ﴞ ", Info = "" }
+-- M.diagnostic_signs = { Error = " ", Warn = " ", Hint = "ﴞ ", Info = "" }
 
 return M

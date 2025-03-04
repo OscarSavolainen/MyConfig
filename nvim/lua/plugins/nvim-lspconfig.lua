@@ -1,6 +1,6 @@
 local on_attach = require("util.lsp").on_attach
-local diagnostic_signs = require("util.lsp").diagnostic_signs
-local typescript_organise_imports = require("util.lsp").typescript_organise_imports
+local diagnostic_signs = require("util.icons").diagnostic_signs
+-- local typescript_organise_imports = require("util.lsp").typescript_organise_imports
 
 local config = function()
 	require("neoconf").setup({})

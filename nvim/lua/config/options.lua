@@ -44,3 +44,8 @@ opt.guicursor = "n-v-c:block,i-ci-ve:ver25-Cursor,r-cr:hor20,o:hor50,a:blinkwait
 opt.encoding = "UTF-8"
 opt.showmode = false
 
+vim.filetype.add({
+  pattern = {
+    ["Dockerfile%..*"] = "dockerfile",
+  },
+})
