@@ -49,3 +49,9 @@ vim.filetype.add({
     ["Dockerfile%..*"] = "dockerfile",
   },
 })
+
+-- Treat CUDA files as C++ for syntax highlighting and LSP
+vim.cmd [[
+  autocmd BufRead,BufNewFile *.cu set filetype=cpp
+  autocmd BufRead,BufNewFile *.cuh set filetype=cpp
+]]

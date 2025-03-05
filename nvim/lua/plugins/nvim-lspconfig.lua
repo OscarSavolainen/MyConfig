@@ -83,6 +83,12 @@ local config = function()
     }
   })
 
+  lspconfig.clangd.setup {
+		capabilities = capabilities, -- autocomplete
+		on_attach = on_attach,
+    filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "cu" },
+  }
+
   local goimports = require("efmls-configs.formatters.goimports")
 	local luacheck = require("efmls-configs.linters.luacheck")
 	local stylua = require("efmls-configs.formatters.stylua")
