@@ -117,8 +117,8 @@ source $ZSH/oh-my-zsh.sh
 
 
 # Some personal aliases
-alias ca='conda activate'
 alias vim='nvim'
+alias ca='conda activate'
 ff() {
     find . -maxdepth 1 -name "$1" -print
 }
@@ -126,7 +126,16 @@ alias dsa='docker stop $(docker ps -a -q)'
 alias dra='docker rm $(docker ps -a -q)'
 alias version='lsb_release -a'
 alias vim.='vim .'
+alias gcame='git commit --amend --no-edit'
+alias kgp='kubectl get pods'
+alias kgr='kubectl get routes'
+alias ka='kubectl apply'
+alias kd='kubectl delete'
+alias gcbr='git_checkout_remote_branch'
 
+git_checkout_remote_branch() {
+  git fetch origin && git checkout -b "$1" origin/"$1"
+}
 # Personal settings:
 # Keeps less from opening a seperate window
 export LESS=FRX
@@ -190,6 +199,25 @@ eval "conda activate $DEFAULT_CONDA_ENV"
 
 # Created by `pipx` on 2024-06-06 08:50:09
 export PATH="$PATH:/Users/oscarsavolainen/.local/bin"
+
+# Load secrets file if it exists
+if [ -f ".secrets" ]; then
+  echo "Exporting secrets"
+  while IFS= read -r line; do
+    # Skip comments and empty lines
+    if [[ ! "$line" =~ ^#.*$ ]] && [ -n "$line" ]; then
+      # Extract key and value
+      key=$(echo "$line" | cut -d= -f1)
+      value=$(echo "$line" | cut -d= -f2-)
+      
+      # Strip surrounding quotes if present
+      value=$(echo "$value" | sed -e "s/^'//; s/'$//; s/^\"//; s/\"$//")
+      
+      # echo "Exporting: $key, $value"
+      export "$key=$value"
+    fi
+  done < ".secrets"
+fi
 
 # Keymappings
 xmodmap ~/.Xmodmap

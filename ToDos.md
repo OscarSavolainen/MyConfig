@@ -8,3 +8,4 @@ Claude connected co-pilot, try out the cursor attachment. Ask at Nscale for an e
 Get i3 configured.
 Map leader + Q to same as alt+f4, so it's consistent across apps.
 Harpoon, probably useful.
+When I max-pane a panel in tmux, it cuts off the bottom of the text.
