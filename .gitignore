@@ -1,4 +1,7 @@
 tmux/plugins
 
 # My API keys, etc.
-config-files/.secrets 
+config-files/.secrets.sh
+
+# Hardware details of my personal laptop
+personal-laptop-details

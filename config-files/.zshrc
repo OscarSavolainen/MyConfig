@@ -6,6 +6,10 @@ DEFAULT_CONDA_ENV="base"
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
 
+# # Keymappings
+# echo "setxkbmap -option caps:enter"
+# # xmodmap ~/.Xmodmap
+
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
@@ -81,6 +85,7 @@ plugins=(
   zsh-bat
   tmux
   poetry
+  kube-aliases
 )
 
 ZSH_TMUX_AUTOSTART=true
@@ -127,11 +132,13 @@ alias dra='docker rm $(docker ps -a -q)'
 alias version='lsb_release -a'
 alias vim.='vim .'
 alias gcame='git commit --amend --no-edit'
-alias kgp='kubectl get pods'
-alias kgr='kubectl get routes'
-alias ka='kubectl apply'
-alias kd='kubectl delete'
+alias kge="kubectl get events --sort-by='.lastTimestamp'"
 alias gcbr='git_checkout_remote_branch'
+alias dda="docker rm -f \$(docker ps -a -q)"
+alias kdn="kubectl describe node" # overwrites delete node
+alias kbm="kubectl exec -it pytorch-dev-pod-dale-no-gpu -- /bin/zsh"
+# Find all files in current dir that match argument 1, and apply command 2 to them 
+alias faa="/home/oscar/Coding/Mine/MyConfig/zsh/scripts/find-and-apply.zsh"
 
 git_checkout_remote_branch() {
   git fetch origin && git checkout -b "$1" origin/"$1"
@@ -201,23 +208,8 @@ eval "conda activate $DEFAULT_CONDA_ENV"
 export PATH="$PATH:/Users/oscarsavolainen/.local/bin"
 
 # Load secrets file if it exists
-if [ -f ".secrets" ]; then
+if [ -f "$HOME/.secrets.sh" ]; then
   echo "Exporting secrets"
-  while IFS= read -r line; do
-    # Skip comments and empty lines
-    if [[ ! "$line" =~ ^#.*$ ]] && [ -n "$line" ]; then
-      # Extract key and value
-      key=$(echo "$line" | cut -d= -f1)
-      value=$(echo "$line" | cut -d= -f2-)
-      
-      # Strip surrounding quotes if present
-      value=$(echo "$value" | sed -e "s/^'//; s/'$//; s/^\"//; s/\"$//")
-      
-      # echo "Exporting: $key, $value"
-      export "$key=$value"
-    fi
-  done < ".secrets"
+  source "$HOME/.secrets.sh"
 fi
 
-# Keymappings
-xmodmap ~/.Xmodmap
