@@ -53,6 +53,33 @@ local config = function()
 		},
 	})
 
+  -- rust
+  lspconfig.rust_analyzer.setup({
+    capabilities = capabilities, -- autocomplete
+    on_attach = on_attach,
+    filetypes = { "rust" },
+    root_dir = lspconfig.util.root_pattern("Cargo.toml"),
+    settings = {
+      ["rust-analyzer"] = {
+        imports = {
+          granularity = {
+            group = "module",
+          },
+          prefix = "self",
+        },
+        cargo = {
+          buildScripts = {
+            enable = true,
+          },
+          allFeatures = true,
+        },
+        procMacro = {
+          enable = true
+        },
+      }
+    }
+  })
+
 	-- bash
 	lspconfig.bashls.setup({
 		capabilities = capabilities,
@@ -83,6 +110,7 @@ local config = function()
     }
   })
 
+  -- C++/CUDA
   lspconfig.clangd.setup {
 		capabilities = capabilities, -- autocomplete
 		on_attach = on_attach,

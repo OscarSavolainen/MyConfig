@@ -1,14 +1,10 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-DEFAULT_CONDA_ENV="base"
+DEFAULT_CONDA_ENV="nscale"
 
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
-
-# # Keymappings
-# echo "setxkbmap -option caps:enter"
-# # xmodmap ~/.Xmodmap
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -131,7 +127,7 @@ alias dsa='docker stop $(docker ps -a -q)'
 alias dra='docker rm $(docker ps -a -q)'
 alias version='lsb_release -a'
 alias vim.='vim .'
-alias gcame='git commit --amend --no-edit'
+alias gcane='git commit --amend --no-edit'
 alias kge="kubectl get events --sort-by='.lastTimestamp'"
 alias gcbr='git_checkout_remote_branch'
 alias dda="docker rm -f \$(docker ps -a -q)"
@@ -139,6 +135,8 @@ alias kdn="kubectl describe node" # overwrites delete node
 alias kbm="kubectl exec -it pytorch-dev-pod-dale-no-gpu -- /bin/zsh"
 # Find all files in current dir that match argument 1, and apply command 2 to them 
 alias faa="/home/oscar/Coding/Mine/MyConfig/zsh/scripts/find-and-apply.zsh"
+alias exc="export KUBECONFIG=\${CHAOS_KUBECONFIG}"
+alias exm="export KUBECONFIG=\${MI300_KUBECONFIG}"
 
 git_checkout_remote_branch() {
   git fetch origin && git checkout -b "$1" origin/"$1"
@@ -206,6 +204,9 @@ eval "conda activate $DEFAULT_CONDA_ENV"
 
 # Created by `pipx` on 2024-06-06 08:50:09
 export PATH="$PATH:/Users/oscarsavolainen/.local/bin"
+
+# Add go-path (e.g. for stern)
+export PATH=$PATH:~/go/bin
 
 # Load secrets file if it exists
 if [ -f "$HOME/.secrets.sh" ]; then

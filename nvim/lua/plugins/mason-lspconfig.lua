@@ -4,7 +4,8 @@ local opts = {
 		"bashls",
 		"basedpyright",
 		"lua_ls",
-    "gopls"
+    "gopls",
+    "rust_analyzer",
 	},
 
 	automatic_installation = true,
