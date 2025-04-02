@@ -78,7 +78,7 @@ plugins=(
   zsh-syntax-highlighting
   zsh-autosuggestions
   you-should-use
-  zsh-bat
+  #zsh-bat
   tmux
   poetry
   kube-aliases
@@ -118,6 +118,7 @@ source $ZSH/oh-my-zsh.sh
 
 
 # Some personal aliases
+alias nvim='/etc/nvim/bin/nvim'
 alias vim='nvim'
 alias ca='conda activate'
 ff() {
@@ -202,6 +203,9 @@ eval "conda activate $DEFAULT_CONDA_ENV"
 
 # For mac:
 # source /Users/oscarsavolainen/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# For linux:
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Created by `pipx` on 2024-06-06 08:50:09
 export PATH="$PATH:/Users/oscarsavolainen/.local/bin"
