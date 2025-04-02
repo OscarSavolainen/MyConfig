@@ -26,7 +26,7 @@ end
 
 function M.insert_ipdb_breakpoint()
     M.insert_indented_lines({
-        'import ipdb; ipdb.set_trace()'
+        'import ipdb; ipdb.set_trace(); import pprint'
     })
 end
 
