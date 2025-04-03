@@ -2,7 +2,7 @@
 # A startup script to run when I boot up my computer
 
 # Keymappings
-xmodmap ~/.Xmodmap
+# xmodmap ~/.Xmodmap
 
 # Launch minimize_window, it automatically minimizes any window I am
 # not focused on (so that with my transparent alactritty I can see my
@@ -27,12 +27,12 @@ slack &
 thunderbird &
 
 # Connect to bluetooth headphones
-python connect-bluetooth.py
+# python connect-bluetooth.py
 # ./connect-bluetooth-headphones.sh
 
 # NordVPN
-norvpn set autoconnect on
-nordvpm connect UnitedKingdom
+# norvpn set autoconnect on
+# nordvpm connect UnitedKingdom
 
 # Add SSH key via keychain
 eval "$(keychain --eval --quiet ~/.ssh/id_ed25519)"
