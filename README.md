@@ -63,3 +63,10 @@ sudo systemctl status my-startup-script.service
 
 ## Config files:
 Go to config-files and follow the README.
+
+## Tmux startup
+I like to have some tabs open automatically when I start tmux.
+```bash
+ln -s /home/oscar/Coding/Mine/MyConfig/scripts/tmux-startup.sh ~/.tmux-startup.sh
+```
+Then our .zshrc file should execute it at startup.

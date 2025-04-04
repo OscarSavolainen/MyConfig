@@ -219,3 +219,7 @@ if [ -f "$HOME/.secrets.sh" ]; then
   source "$HOME/.secrets.sh"
 fi
 
+# Add to your .zshrc
+if [[ -z "$TMUX" ]]; then
+  ~/tmux-startup.sh
+fi
