@@ -74,7 +74,7 @@ ZSH_THEME="pixegami-agnoster"
 plugins=(
   git
   autojump
-  #aliases
+  aliases
   zsh-syntax-highlighting
   zsh-autosuggestions
   you-should-use
@@ -84,7 +84,7 @@ plugins=(
   kube-aliases
 )
 
-ZSH_TMUX_AUTOSTART=true
+# ZSH_TMUX_AUTOSTART=true
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -118,7 +118,7 @@ source $ZSH/oh-my-zsh.sh
 
 
 # Some personal aliases
-alias nvim='/etc/nvim/bin/nvim'
+#alias nvim='/etc/nvim/bin/nvim'
 alias vim='nvim'
 alias ca='conda activate'
 ff() {
@@ -204,9 +204,6 @@ eval "conda activate $DEFAULT_CONDA_ENV"
 # For mac:
 # source /Users/oscarsavolainen/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# For linux:
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 # Created by `pipx` on 2024-06-06 08:50:09
 export PATH="$PATH:/Users/oscarsavolainen/.local/bin"
 
@@ -219,7 +216,21 @@ if [ -f "$HOME/.secrets.sh" ]; then
   source "$HOME/.secrets.sh"
 fi
 
-# Add to your .zshrc
-if [[ -z "$TMUX" ]]; then
-  ~/tmux-startup.sh
+# Tmux startup configuration
+# Only run this if not already in a tmux session and tmux is installed
+if [[ -z "$TMUX" ]] && command -v tmux &> /dev/null; then
+  # Check if tmux server is running (any session exists)
+  tmux list-sessions &> /dev/null
+  if [ $? -eq 0 ]; then
+    # Tmux is running, just attach to main session
+    exec tmux attach-session -t main
+  else
+    # No tmux running, create new session with all windows
+    echo "Starting fresh tmux session..."
+    exec ~/.tmux-startup.sh
+  fi
 fi
+
+# For linux:
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
