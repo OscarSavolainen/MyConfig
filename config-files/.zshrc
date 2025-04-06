@@ -139,6 +139,7 @@ alias faa="/home/oscar/Coding/Mine/MyConfig/zsh/scripts/find-and-apply.zsh"
 alias exc="export KUBECONFIG=\${CHAOS_KUBECONFIG}"
 alias exm="export KUBECONFIG=\${MI300_KUBECONFIG}"
 alias kdi="kd inferenceservice"
+alias sagu="sudo apt-get update && sudo apt-get upgrade"
 
 git_checkout_remote_branch() {
   git fetch origin && git checkout -b "$1" origin/"$1"

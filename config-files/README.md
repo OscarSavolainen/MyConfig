@@ -6,6 +6,7 @@ ln -s /home/oscar/Coding/Mine/MyConfig/config-files/.xprofile ~/.xprofile
 ln -s /home/oscar/Coding/Mine/MyConfig/config-files/.zshrc ~/.zshrc
 ln -s /home/oscar/Coding/Mine/MyConfig/config-files/.bashrc ~/.bashrc
 ln -s /home/oscar/Coding/Mine/MyConfig/config-files/.vimrc ~/.vimrc
+ln -s /home/oscar/Coding/Mine/MyConfig/config-files/.Xresources ~/.Xresources
 ```
 I also have a `secrets.sh` (in `.gitignore`) where I keep a lot of env variables, e.g.
 ```

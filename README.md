@@ -1,9 +1,11 @@
 Some setup:
 
+
 ## Useful packages
 ```bash
 chmod +x scripts/installs.sh
 ```
+
 
 ## Key remapping
 Caps -> Escape
@@ -25,6 +27,7 @@ Section "InputClass"
         Option "XkbOptions" "caps:escape"
 EndSection
 ```
+
 
 ## Startup Script
 ```bash
@@ -61,8 +64,10 @@ Either reboot to check the startup script, or just check the systemd service sta
 sudo systemctl status my-startup-script.service
 ```
 
+
 ## Config files:
 Go to config-files and follow the README.
+
 
 ## Tmux startup
 I like to have some tabs open automatically when I start tmux.
@@ -70,3 +75,13 @@ I like to have some tabs open automatically when I start tmux.
 ln -s /home/oscar/Coding/Mine/MyConfig/scripts/tmux-startup.sh ~/.tmux-startup.sh
 ```
 Then our .zshrc file should execute it at startup.
+
+
+## i3
+```bash
+ln -s /home/oscar/Coding/Mine/MyConfig/i3/config/i3 ~/.config/i3
+ln -s /home/oscar/Coding/Mine/MyConfig/i3/polybar ~/.config/polybar
+ln -s /home/oscar/Coding/Mine/MyConfig/i3/picom ~/.config/picom
+ln -s /home/oscar/Coding/Mine/MyConfig/i3/rofi ~/.config/rofi
+chmod +x ~/.config/polybar/launch_polybar.sh
+```
